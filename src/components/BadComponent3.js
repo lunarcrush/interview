@@ -1,10 +1,10 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React from 'react'
+import { View, Text } from 'react-native'
 
-export default function BadComponent3(props) {
+export default function BadComponent3({ text, status = false }) {
   return (
     <View>
-      <Text>Placeholder</Text>
+      <Text>{status ? 'Loading...' : text}</Text>
     </View>
-  );
+  )
 }

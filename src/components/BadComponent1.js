@@ -1,32 +1,25 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React from 'react'
+import BadComponent3 from './BadComponent3'
 
-export default function BadComponent1(props) {
-  const [status, setStatus] = React.useState("loading");
-  const [data, setData] = React.useState({});
+export default function BadComponent1({ url }) {
+  const [status, setStatus] = React.useState(false)
+  const [data, setData] = React.useState({})
 
   const getData = async () => {
-    setStatus("loading");
-    const res = await fetch("https://lunarcrush.com/api3/coinoftheday").then(
-      (res) => res.json()
-    );
-    setData(res);
-    setStatus("fresh");
-  };
+    setStatus(true)
+    const res = await fetch(url).then((res) => res.json())
+    setData(res)
+    setStatus(false)
+  }
 
   React.useEffect(() => {
-    getData();
-  }, []);
+    getData()
+  }, [])
 
   return (
-    <View>
-      {status === "loading" ? (
-        <Text>Loading...</Text>
-      ) : (
-        <Text>
-          LunarCrush coin of the day is {data.name} ({data.symbol})
-        </Text>
-      )}
-    </View>
-  );
+    <BadComponent3
+      status={status}
+      text={`LunarCrush coin of the day is ${data.name} (${data.symbol})`}
+    />
+  )
 }
