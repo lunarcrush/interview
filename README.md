@@ -13,6 +13,10 @@ We will also welcome your pull request with a poorly designed component that is 
 - clone this repo
 - `npm install`
 - `npx expo start`
+
+  _for web_
+
+- `NODE_OPTIONS=--openssl-legacy-provider expo start --web`
 - fix one of the `BadComponent*.js` files
 - pull request!
 
